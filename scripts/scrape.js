@@ -50,7 +50,7 @@ const main = async () => {
     })
   )
 
-  files.sort((a, b) =>
+  data.sort((a, b) =>
     a.timestamp < b.timestamp ? -1 : a.timestamp > b.timestamp ? 1 : 0
   )
 
