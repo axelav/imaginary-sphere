@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "jsdom": "^19.0.0",
+    "luxon": "^2.1.1"
+  },
+  "scripts": {
+    "data": "node scripts/scrape.js && prettier -w data.json"
+  }
+}
