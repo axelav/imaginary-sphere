@@ -8,6 +8,13 @@ const timestampToISO = str => DateTime.fromFormat(
   'MMMM d, yyyy h:mma'
 ).toISO()
 
+const sortByTimestamp = data => {
+  return [...data].sort((a, b) =>
+    a.timestamp < b.timestamp ? -1 : a.timestamp > b.timestamp ? 1 : 0
+  )
+
+}
+
 const getFiles = async (dir) => {
   const dirents = await readdir(dir, { withFileTypes: true })
   const files = await Promise.all(
@@ -50,11 +57,7 @@ const main = async () => {
     })
   )
 
-  data.sort((a, b) =>
-    a.timestamp < b.timestamp ? -1 : a.timestamp > b.timestamp ? 1 : 0
-  )
-
-  await writeFile(__dirname + '/../data.json', JSON.stringify(data))
+  await writeFile(__dirname + '/../data.json', JSON.stringify(sortByTimestamp(data)))
 }
 
 main()
